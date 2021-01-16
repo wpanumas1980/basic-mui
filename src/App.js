@@ -1,24 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Button, createMuiTheme, MuiThemeProvider } from '@material-ui/core';
+import { StylesProvider, withStyles } from '@material-ui/styles';
 
+const theme = createMuiTheme({
+  overrides: {
+    MuiButton: {
+      contained: {
+        borderRadius: '8px',
+        boxShadow: 'none',
+        backgroundColor: '#039be5',
+        color: 'white',
+        textTransform: 'none',
+        '&:hover': {
+          backgroundColor: '#0388ca'
+        }
+      }
+    }
+  }
+});
+
+const GlobalCSS = withStyles({
+  '@global': {
+    '.MuiButton-contained': {
+      borderRadius: '8px',
+      boxShadow: 'none',
+      backgroundColor: '#039be5',
+      color: 'white',
+      textTransform: 'none',
+      '&:hover': {
+        backgroundColor: '#0388ca'
+      }
+    }
+  }
+})(()=>null)
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+    <StylesProvider>
+      <div>
+        <GlobalCSS/>
+        <Button variant='contained'>Click</Button>
+      </div>
+    </StylesProvider>
+
   );
 }
 

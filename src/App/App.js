@@ -1,21 +1,20 @@
 import { createMuiTheme, CssBaseline, makeStyles, ThemeProvider } from '@material-ui/core';
 import React from 'react';
 import Header from '../components/Header';
-import PageHeader from '../components/PageHeader';
 import SideMenu from '../components/SideMenu';
-import PeopleOutlineTwoToneIcon from '@material-ui/icons/PeopleOutlineTwoTone';
 import Employees from '../pages/Employees/Employees';
+
 
 
 
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#FFF000',
+      main: '#3f51b5',
       light: '#3c44b126'
     },
     secondary: {
-      main: '#FFF444',
+      main: '#f50057',
       light: '#f84526'
     },
     background: {

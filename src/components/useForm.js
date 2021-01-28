@@ -12,12 +12,14 @@ export function useForm(initialFValues) {
             [name]: value
         })
     }
-    
-    return {
-        values,
-        setValues,
-        handleInputChange
-    }
+
+    return (
+        {
+            values,
+            setValues,
+            handleInputChange
+        }
+    )
 }
 
 const useStyles = makeStyles(theme => ({
@@ -29,10 +31,11 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
+
 export function Form(props) {
     const classes = useStyles();
-
-    return(
+    
+    return (
         <form className={classes.root}>
             {props.children}
         </form>

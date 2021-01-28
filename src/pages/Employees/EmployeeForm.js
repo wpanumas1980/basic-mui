@@ -1,12 +1,6 @@
-import React,{ useState } from 'react';
+import React, { useState } from 'react';
 import { Grid, makeStyles, TextField } from '@material-ui/core';
-import {useForm,Form} from '../../components/useForm';
-
-const genderItems = [
-    { id: 'male', title: 'Male' },
-    { id: 'female', title: 'Female' },
-    { id: 'other', title: 'Other' },
-]
+import {useForm, Form} from '../../components/useForm';
 
 const initialFValues = {
     id: 0,
@@ -21,13 +15,8 @@ const initialFValues = {
 }
 
 export default function EmployeeForm() {
- 
-
-    const {
-        values,
-        setValues,
-        handleInputChange
-    } = useForm(initialFValues);
+   
+    const { values, setValues, handleInputChange } = useForm(initialFValues)
 
 
     return (

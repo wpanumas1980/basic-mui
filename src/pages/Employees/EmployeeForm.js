@@ -23,7 +23,14 @@ const initialFValues = {
 
 export default function EmployeeForm() {
 
-    const { values, setValues, handleInputChange } = useForm(initialFValues)
+    const validate = () => {
+        let temp = {}
+        temp.fullName = values.fullName ? "" : "This field is required."
+        temp.email = (/$^|.+@.+..+/).test(values.email) ? "" : "Email is not valid."
+        temp.mobile = values.mobile.length > 9 ? "" : "Minimum 10 numbers required"
+        temp.departmentId = values.departmentId.length ? "" : "This field is required."
+    }
+    const { values, setValues, handleInputChange } = useForm(initialFValues);
 
     return (
         <Form>
@@ -81,6 +88,16 @@ export default function EmployeeForm() {
                         value={values.isPermanent}
                         onChange={handleInputChange}
                     />
+                    <div>
+                        <Controls.Button
+                            text="Submit"
+                            type="submit"
+                        />
+                        <Controls.Button
+                            text="Reset"
+                            color="default"
+                        />
+                    </div>
                 </Grid>
             </Grid>
         </Form>

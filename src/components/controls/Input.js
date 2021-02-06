@@ -1,17 +1,30 @@
 import { TextField } from '@material-ui/core';
-import React from 'react'
+import React from 'react';
 
 export default function Input(props) {
-    const {name,label,value,onChange} = props;
+    const { name, label, value, error = null, onChange } = props;
     return (
-            <TextField
-                variant="outlined"
-                label={label}
-                name={name}
-                value={value}
-                onChange={onChange}
-                error
-                helperText="some validation error."
-            />
+        <TextField
+            variant="outlined"
+            label={label}
+            name={name}
+            value={value}
+            onChange={onChange}
+            {...(error && {error:true, helperText:error})}
+        />
     )
 }
+/*
+before refactor
+ <TextField
+            variant="outlined"
+            label={label}
+            name={name}
+            value={value}
+            onChange={onChange}
+            error
+            helperText="some validation error."
+        />
+
+*/
+

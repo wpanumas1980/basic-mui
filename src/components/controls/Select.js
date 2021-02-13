@@ -1,6 +1,7 @@
 import React from "react";
 import {
   FormControl,
+  FormHelperText,
   InputLabel,
   MenuItem,
   Select as MuiSelect,
@@ -22,6 +23,7 @@ export default function Select(props) {
           </MenuItem>
         ))}
       </MuiSelect>
+      {error && <FormHelperText>{error}</FormHelperText>}
     </FormControl>
   );
 }

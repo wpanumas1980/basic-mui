@@ -22,11 +22,15 @@ const initialFValues = {
 };
 
 export default function EmployeeForm() {
-  const validate = () => {
-    let temp = {};
+  const validate = (fieldValues = values) => {
+    let temp = {...errors};
+    if('fullname' in fieldValues)
     temp.fullName = values.fullName ? "" : "This field is required.";
+    if('email' in fieldValues)
     temp.email = /$^|.+@.+..+/.test(values.email) ? "" : "Email is not valid.";
+    if('mobile' in fieldValues)
     temp.mobile = values.mobile.length > 9 ? "" : "Minimum 10 numbers required";
+    if('departmentId' in fieldValues)
     temp.departmentId =
       values.departmentId.length !== 0 ? "" : "This field is required.";
     setErrors({
@@ -35,9 +39,14 @@ export default function EmployeeForm() {
     return Object.values(temp).every((x) => x === "");
   };
 
-  const { values, setValues, errors, setErrors, handleInputChange } = useForm(
-    initialFValues
-  );
+  const {
+    values,
+    setValues,
+    errors,
+    setErrors,
+    handleInputChange,
+    resetForm,
+  } = useForm(initialFValues,true,validate);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -106,7 +115,7 @@ export default function EmployeeForm() {
           />
           <div>
             <Controls.Button text="Submit" type="submit" />
-            <Controls.Button text="Reset" color="default" />
+            <Controls.Button text="Reset" color="default" onClick={resetForm}/>
           </div>
         </Grid>
       </Grid>
